@@ -11,13 +11,12 @@ from collections import Counter
 import random
 import time
 
-TRAIN_ROOT_1 = r"data/dcpt_mat/D1"
-TRAIN_ROOT_2 = r"data/dcpt_mat/PD"
+TRAIN_ROOT = r"data/dcpt_mat/D1" 
 
-DATA_RATIOS = [1.0, 1.0]
+DATA_RATIOS = [1.0]
 
 # 目标域 
-TEST_ROOT    = r"data/dcpt_mat/I1"
+TEST_ROOT  = r"data/dcpt_mat/I1"
 
 BATCH_SIZE = 50
 LEARNING_RATE = 1e-5
@@ -167,7 +166,7 @@ def run_advanced_cross_domain(force_train=False):
 
     print(f"\n--- [Step 1] 加载源域 (训练集) ---")
     source_dataset = MatDataset(
-        root_dir=[TRAIN_ROOT_1, TRAIN_ROOT_2],
+        root_dir=TRAIN_ROOT,  # 直接传入单源路径
         ratios=DATA_RATIOS,
         transform=train_transform,
         stack_size=1,  
